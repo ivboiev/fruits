@@ -5,7 +5,7 @@ createApp({
     <div>
       <h1>Lista de Frutas</h1>
       <ul>
-        <li v-for="fruta in paginatedCities" :key="fruta.id" >
+        <li v-for="fruta in paginatedFruits" :key="fruta.id" >
           <img :src="fruta.imagen" :alt="fruta.fruta" width="100" height="100" />
           <div>
             <strong>{{ fruta.fruta }}</strong> ({{ fruta.precioKg.toLocaleString() }} precio por kilo)
@@ -27,7 +27,7 @@ createApp({
   `,
   data() {
     return {
-      cities: [
+      fruits: [
         { id: 1, fruta: "Manzana", precioKg: "2.50€", imagen: "img/apple.webp" },
         { id: 2, fruta: "Avocado", precioKg: "8€", imagen: "img/avocado.webp" },
         { id: 3, fruta: "Banana", precioKg: "2€", imagen: "img/banana.webp" },
@@ -42,7 +42,8 @@ createApp({
         { id: 12, fruta: "Pera", precioKg: "2.75€", imagen: "img/pears.webp" },
         { id: 13, fruta: "Ciruelas", precioKg: "2.25€", imagen: "img/plums.webp" },
         { id: 14, fruta: "Grandas", precioKg: "7€", imagen: "img/pomegranates.webp" },
-        { id: 15, fruta: "Fresa", precioKg: "7.25€", imagen: "img/strawberries.webp" }
+        { id: 15, fruta: "Fresa", precioKg: "7.25€", imagen: "img/strawberries.webp" },
+        
       ],
       currentPage: 1,
       itemsPerPage: 5,
@@ -52,7 +53,7 @@ createApp({
     totalPages() {
       return Math.ceil(this.cities.length / this.itemsPerPage);
     },
-    paginatedCities() {
+    paginatedFruits() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       return this.cities.slice(start, end);
@@ -62,6 +63,12 @@ createApp({
     nextPage() {
       if (this.currentPage < this.totalPages) this.currentPage++;
     },
+    prevPage() {
+      if (this.currentPage > 1) this.currentPage--;
+    },
+  },
+}).mount('#app');
+
     prevPage() {
       if (this.currentPage > 1) this.currentPage--;
     },
