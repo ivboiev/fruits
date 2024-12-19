@@ -42,7 +42,7 @@ createApp({
         { id: 12, fruta: "Pera", precioKg: "2.75€", imagen: "img/pears.webp" },
         { id: 13, fruta: "Ciruelas", precioKg: "2.25€", imagen: "img/plums.webp" },
         { id: 14, fruta: "Grandas", precioKg: "7€", imagen: "img/pomegranates.webp" },
-        { id: 15, fruta: "Fresa", precioKg: "7.25€", imagen: "img/strawberries.webp" },
+        { id: 15, fruta: "Fresa", precioKg: "7.25€", imagen: "img/strawberries.webp" }
         
       ],
       currentPage: 1,
@@ -51,24 +51,18 @@ createApp({
   },
   computed: {
     totalPages() {
-      return Math.ceil(this.cities.length / this.itemsPerPage);
+      return Math.ceil(this.fruits.length / this.itemsPerPage);
     },
     paginatedFruits() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.cities.slice(start, end);
+      return this.fruits.slice(start, end);
     },
   },
   methods: {
     nextPage() {
       if (this.currentPage < this.totalPages) this.currentPage++;
     },
-    prevPage() {
-      if (this.currentPage > 1) this.currentPage--;
-    },
-  },
-}).mount('#app');
-
     prevPage() {
       if (this.currentPage > 1) this.currentPage--;
     },
