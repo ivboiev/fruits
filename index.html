@@ -13,20 +13,20 @@
 
   <div class="grid-container">
     <ul >
-      <li class="grid-item" v-for="ciudad in paginatedCities" :key="ciudad.id">
-        <img :src="ciudad.imagen" :alt="ciudad.ciudad" width="100" height="100" />
+      <li class="grid-item" v-for="fruta in paginatedFruits">
+        <img :src="fruta.imagen" :alt="fruta.fruta" width="100" height="100" />
         <div>
-          <strong>{{ ciudad.ciudad }}</strong> ({{ ciudad.habitantes.toLocaleString() }} habitantes)
+          <strong>{{ fruits.fruta }}</strong>
           <br>
-          {{ ciudad.pais }}, {{ ciudad.continente }}
+         
         </div>
       </li>
     </ul>
   </div>
     <div class="pagination">
-      <button class="button-17" role="button" @click="prevPage" :disabled="currentPage === 1">Anterior</button>
+      <button class="button" role="button" @click="prevPage" :disabled="currentPage === 1">Anterior</button>
       <span>Página {{ currentPage }} de {{ totalPages }}</span>
-      <button class="button-17" role="button" @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+      <button class="button" role="button" @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
       
     </div>
 
@@ -35,3 +35,5 @@
   <script src="app.js"></script>
 </body>
 </html>
+
+
